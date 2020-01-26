@@ -25,16 +25,16 @@ public class Foodability extends Application {
             );
             channel1.setDescription("Recommended restaurant nearby!");
 
-            NotificationChannel channel2 = new NotificationChannel(
+            /*NotificationChannel channel2 = new NotificationChannel(
                     CHANNEL_2_ID,
                     "Foodability",
                     NotificationManager.IMPORTANCE_LOW
             );
-            channel2.setDescription("Good Accomodations!");
+            channel2.setDescription("Good Accomodations!");*/
 
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel1);
-            manager.createNotificationChannel(channel2);
+            // manager.createNotificationChannel(channel2);
         }
     }
 }

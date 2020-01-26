@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import java.util.Random;
 
 import static com.example.notifications.Foodability.CHANNEL_1_ID;
 import static com.example.notifications.Foodability.CHANNEL_2_ID;
@@ -28,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         notificationManager = NotificationManagerCompat.from(this);
 
-        editTextTitle = findViewById(R.id.edit_text_title);
-        editTextMessage = findViewById(R.id.edit_text_message);
+        /*editTextTitle = findViewById(R.id.edit_text_title);
+        editTextMessage = findViewById(R.id.edit_text_message);*/
     }
 
     public void sendOnChannel1(View view) {
-        String title = editTextTitle.getText().toString();
-        String message = editTextMessage.getText().toString();
+        String title = "Foodability";
+        String message = "Recommended restaurant: " + generateRestaurant();
 
         Intent activityIntent = new Intent(this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this,
@@ -54,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
                 .setColor(Color.WHITE)
                 .setContentIntent(contentIntent)
                 //.setAutoCancel(true)
-                .setOnlyAlertOnce(true)
+                .setOnlyAlertOnce(false)
                 .addAction(R.mipmap.ic_launcher, "View", actionIntent)
                 .build();
 
         notificationManager.notify(1,notification);
     }
 
-    public void sendOnChannel2(View view) {
+    /*public void sendOnChannel2(View view) {
         String title = editTextTitle.getText().toString();
         String message = editTextMessage.getText().toString();
 
@@ -73,5 +74,34 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         notificationManager.notify(2,notification);
+    }*/
+
+    public static String generateRestaurant() {
+        String restaurant = "";
+        Random rand = new Random();
+        int n = rand.nextInt(5);
+
+        switch (n) {
+            case 0:
+                restaurant = "\nMcDonald's - 111 George Bush Dr.";
+                break;
+            case 1:
+                restaurant = "\nTaco Bell - 731 University Dr.";
+                break;
+            case 2:
+                restaurant = "\nChipotle - 815 University Dr.";
+                break;
+            case 3:
+                restaurant = "\nTorchy's - 1037 Texas Ave.";
+                break;
+            case 4:
+                restaurant = "\nFuego's - 108 Poplar St.";
+                break;
+
+            default:
+                break;
+        }
+
+        return  restaurant;
     }
 }
