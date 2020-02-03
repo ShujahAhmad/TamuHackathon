@@ -1,3 +1,3 @@
 # TamuHackathon
 
-Use this tutorial - https://codelabs.developers.google.com/codelabs/build-your-first-android-app/#0
+Foodability - a restaurant rating system for physically-disabled individuals
